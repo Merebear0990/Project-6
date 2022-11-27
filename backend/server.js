@@ -1,3 +1,4 @@
+require('dotenv').config();
 const http = require('http');
 const app = require('./app');
 
@@ -36,6 +37,7 @@ const errorHandler = error => {
   }
 };
 
+// creating the server
 const server = http.createServer(app);
 
 server.on('error', errorHandler);
