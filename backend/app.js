@@ -1,8 +1,8 @@
 // MongoDB Connection: mongodb+srv://merebear0990:<password>@cluster0.g33pgsf.mongodb.net/?retryWrites=true&w=majority
-
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
+const express = require('express'); // imports framework
+const mongoose = require('mongoose'); // interacts with MongoDB - facilitates interaction between express app and database
+const cors = require('cors'); // enables cross origin requests - used this to remove a cors error
+const path = require('path');
 
 const sauceRoutes = require('./routes/sauce');
 const userRoutes = require('./routes/user');
@@ -32,6 +32,8 @@ app.use((req, res, next) => {
   next();
 });
 
+
+app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/auth', userRoutes)
 app.use('/api/sauces', sauceRoutes);
 
